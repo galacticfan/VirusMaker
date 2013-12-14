@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VirusMaker
 {
-    public partial class MainForm : Form
+    public partial class SplashScreen : Form
     {
-        public MainForm()
+        public SplashScreen()
         {
             InitializeComponent();
         }

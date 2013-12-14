@@ -2,8 +2,8 @@ c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\bin\De
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\bin\Debug\VirusMaker.exe
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\bin\Debug\VirusMaker.pdb
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.csprojResolveAssemblyReference.cache
-c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.Form1.resources
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.Properties.Resources.resources
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.csproj.GenerateResource.Cache
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.exe
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.pdb
+c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.MainForm.resources
