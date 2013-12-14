@@ -63,8 +63,8 @@ namespace VirusMaker
                 }
                 else if (virusName.Text.Trim().Length == 0)
                 {
-                    DialogResult result = MessageBox.Show("Please enter a name of a previous virus.");
-                    if (result == DialogResult.Retry)
+                    DialogResult result = MessageBox.Show("Please enter the name of a previous virus.", "Virus Name Null", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.OK)
                     {
                         virusName.Select();
                     }
