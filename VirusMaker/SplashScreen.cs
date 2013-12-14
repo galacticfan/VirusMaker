@@ -15,6 +15,22 @@ namespace VirusMaker
         public SplashScreen()
         {
             InitializeComponent();
+            splashScreenTimer.Start();
         }
+
+        bool hasTicked = false;
+
+        private void splashScreenTimer_Tick(object sender, EventArgs e)
+        {
+            bool currentTick = true;
+            if (currentTick != hasTicked && currentTick == true)
+            {
+                
+                splashScreenTimer.Stop();
+                this.Close();
+            }
+        }
+
+
     }
 }

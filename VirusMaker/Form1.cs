@@ -14,7 +14,7 @@ namespace VirusMaker
     {
         public MainForm()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
     }
 }

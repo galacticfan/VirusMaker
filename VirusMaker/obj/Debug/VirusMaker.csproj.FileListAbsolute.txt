@@ -7,3 +7,4 @@ c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\De
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.exe
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.pdb
 c:\users\jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.MainForm.resources
+C:\Users\Jake\documents\visual studio 2013\Projects\VirusMaker\VirusMaker\obj\Debug\VirusMaker.SplashScreen.resources
