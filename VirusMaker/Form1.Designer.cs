@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.otherOptionsGroup = new System.Windows.Forms.GroupBox();
             this.timeToWait_Value = new System.Windows.Forms.NumericUpDown();
             this.copyToStartup_Label = new System.Windows.Forms.CheckBox();
@@ -65,17 +67,15 @@
             this.saveLocationBtn = new System.Windows.Forms.Button();
             this.dltLastSaveBtn = new System.Windows.Forms.Button();
             this.clearSettingsBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.otherOptionsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timeToWait_Value)).BeginInit();
             this.potHarmfullGroup.SuspendLayout();
             this.justForfunGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -109,6 +109,28 @@
             this.splitContainer1.Size = new System.Drawing.Size(584, 339);
             this.splitContainer1.SplitterDistance = 396;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::VirusMaker.Properties.Resources.virusMakerLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(300, 128);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(87, 78);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(158, 143);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 48);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Please note that this application\r\nic curretly in it\'s pre-release phase\r\nand in " +
+    "the furture, more tools and \r\noptions might be added.\r\n";
             // 
             // otherOptionsGroup
             // 
@@ -435,6 +457,7 @@
             this.msgLog.Location = new System.Drawing.Point(16, 75);
             this.msgLog.Multiline = true;
             this.msgLog.Name = "msgLog";
+            this.msgLog.ReadOnly = true;
             this.msgLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.msgLog.Size = new System.Drawing.Size(159, 81);
             this.msgLog.TabIndex = 4;
@@ -456,6 +479,7 @@
             this.saveLocationBtn.TabIndex = 0;
             this.saveLocationBtn.Text = "Configure Save Location";
             this.saveLocationBtn.UseVisualStyleBackColor = true;
+            this.saveLocationBtn.Click += new System.EventHandler(this.saveLocationBtn_Click);
             // 
             // dltLastSaveBtn
             // 
@@ -465,6 +489,7 @@
             this.dltLastSaveBtn.TabIndex = 0;
             this.dltLastSaveBtn.Text = "Delete Last File";
             this.dltLastSaveBtn.UseVisualStyleBackColor = true;
+            this.dltLastSaveBtn.Click += new System.EventHandler(this.dltLastSaveBtn_Click);
             // 
             // clearSettingsBtn
             // 
@@ -474,28 +499,6 @@
             this.clearSettingsBtn.TabIndex = 3;
             this.clearSettingsBtn.Text = "Clear Current Settings";
             this.clearSettingsBtn.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::VirusMaker.Properties.Resources.virusMakerLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(300, 128);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(87, 78);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(158, 143);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 48);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Please note that this application\r\nic curretly in it\'s pre-release phase\r\nand in " +
-    "the furture, more tools and \r\noptions might be added.\r\n";
             // 
             // MainForm
             // 
@@ -515,6 +518,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.otherOptionsGroup.ResumeLayout(false);
             this.otherOptionsGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timeToWait_Value)).EndInit();
@@ -522,7 +526,6 @@
             this.potHarmfullGroup.PerformLayout();
             this.justForfunGroup.ResumeLayout(false);
             this.justForfunGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

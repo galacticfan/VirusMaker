@@ -25,7 +25,6 @@ namespace VirusMaker
             bool currentTick = true;
             if (currentTick != hasTicked && currentTick == true)
             {
-                
                 splashScreenTimer.Stop();
                 this.Close();
             }
