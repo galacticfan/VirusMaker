@@ -18,7 +18,7 @@ namespace VirusMaker
             InitializeComponent();
 
             string applicationDirectory = Application.StartupPath;
-            saveLocation_Display.Text = applicationDirectory + "\\output";
+            saveLocation_Display.Text = applicationDirectory;
         }
 
         // GLOBALS
@@ -41,7 +41,7 @@ namespace VirusMaker
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                msgLog.Text += "An error occured" + newLine;
+                msgLog.Text += "An error occured." + newLine;
             }
         }
 
@@ -87,7 +87,7 @@ namespace VirusMaker
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                msgLog.Text += "An error occured" + newLine;
+                msgLog.Text += "An error occured." + newLine;
             }
         }
 
@@ -204,13 +204,50 @@ namespace VirusMaker
                             + customCode.Text + newLine;
                     }
 
-
                     batchContentsLoop += "goto start" + newLine;
+
+                    // File creation
+                    string finalBatchContents = batchContentsMain + batchContentsLoop; // merger of batch content
+
+                    string vbsSavePath = saveLocation_Display.Text + "\\Virus Maker Output\\";
+                    string batchSavePath = saveLocation_Display.Text + "\\Virus Maker Output\\";
+
+                    if (virusName.Text.Trim().Length == 0 )
+                    {
+                        DialogResult result = MessageBox.Show("The virus name field is blank, do you wan the default name to be used?", "Virus Name Invalid", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            vbsSavePath += "myVirus.vbs";
+                            batchSavePath += "myVirus_extra.bat";
+                        }
+                    }
+                    else if (virusName.Text.Trim().Length > 0)
+                    {
+                        vbsSavePath += virusName.Text + ".vbs";
+                        batchSavePath += virusName.Text + "_extra.bat";
+                    }
+
+                    // Folder exists check
+                    string virusMakerFolder = saveLocation_Display.Text + "\\Virus Maker Output";
+                    if (File.Exists(virusMakerFolder) == false)
+                    {
+                        System.IO.Directory.CreateDirectory(virusMakerFolder);
+                    }
+
+                    System.IO.StreamWriter vbsWriter;
+                    vbsWriter = new System.IO.StreamWriter(vbsSavePath);
+                    vbsWriter.Write(vbsContentsMain);
+                    vbsWriter.Close();
+                    
+                    System.IO.StreamWriter batchWriter;
+                    batchWriter = new System.IO.StreamWriter(batchSavePath);
+                    batchWriter.Write(finalBatchContents);
+                    batchWriter.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    msgLog.Text += "An error occured" + newLine;
+                    msgLog.Text += "An error occured." + newLine;
                 }
             }
             
