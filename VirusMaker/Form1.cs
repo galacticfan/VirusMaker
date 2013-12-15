@@ -22,16 +22,26 @@ namespace VirusMaker
         }
 
         // GLOBALS
+        string newLine = Environment.NewLine;
 
+        // SAVE + DELETE BUTTONS
         private void saveLocationBtn_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog selectFileDialog = new FolderBrowserDialog();
-            DialogResult result = selectFileDialog.ShowDialog();
-            string folderName = selectFileDialog.SelectedPath;
-
-            if (result == DialogResult.OK)
+            try
             {
-                saveLocation_Display.Text = folderName;
+                FolderBrowserDialog selectFileDialog = new FolderBrowserDialog();
+                DialogResult result = selectFileDialog.ShowDialog();
+                string folderName = selectFileDialog.SelectedPath;
+
+                if (result == DialogResult.OK)
+                {
+                    saveLocation_Display.Text = folderName;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                msgLog.Text += "An error occured" + newLine;
             }
         }
 
@@ -47,18 +57,22 @@ namespace VirusMaker
                     if (File.Exists(virusFilePathVBS))
                     {
                         System.IO.File.Delete(virusFilePathVBS);
+                        msgLog.Text += virusName.Text + ".vbs successfully deleted." + newLine;
                     }
                     else if (File.Exists(virusFilePathVBS) == false)
                     {
                         MessageBox.Show(virusFilePathVBS + " doesn't exist.", "Unable to Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        msgLog.Text += virusName.Text + ".vbs doesn't exist." + newLine;
                     }
                     if (File.Exists(virusFilePathBatch))
                     {
                         System.IO.File.Delete(virusFilePathBatch);
+                        msgLog.Text += virusName.Text + "_extra.bat successfully deleted." + newLine;
                     }
                     else if (File.Exists(virusFilePathBatch) == false)
                     {
                         MessageBox.Show(virusFilePathBatch + " doesn't exist.", "Unable to Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        msgLog.Text += virusName.Text + "_extra.bat doesn't exist." + newLine;
                     }
                 }
                 else if (virusName.Text.Trim().Length == 0)
@@ -72,7 +86,8 @@ namespace VirusMaker
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                msgLog.Text += "An error occured" + newLine;
             }
         }
     }

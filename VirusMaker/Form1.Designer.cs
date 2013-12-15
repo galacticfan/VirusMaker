@@ -454,6 +454,7 @@
             // 
             // msgLog
             // 
+            this.msgLog.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.msgLog.Location = new System.Drawing.Point(16, 75);
             this.msgLog.Multiline = true;
             this.msgLog.Name = "msgLog";
