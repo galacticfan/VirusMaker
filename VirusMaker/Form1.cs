@@ -234,17 +234,37 @@ namespace VirusMaker
                         System.IO.Directory.CreateDirectory(virusMakerFolder);
                     }
 
-                    System.IO.StreamWriter vbsWriter;
-                    vbsWriter = new System.IO.StreamWriter(vbsSavePath);
-                    vbsWriter.Write(vbsContentsMain);
-                    vbsWriter.Close();
-                    
-                    System.IO.StreamWriter batchWriter;
-                    batchWriter = new System.IO.StreamWriter(batchSavePath);
-                    batchWriter.Write(finalBatchContents);
-                    batchWriter.Close();
+                    // Stream writer
+                    try
+                    {
+                        System.IO.StreamWriter vbsWriter;
+                        vbsWriter = new System.IO.StreamWriter(vbsSavePath);
+                        vbsWriter.Write(vbsContentsMain);
+                        vbsWriter.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        msgLog.Text += "Could not write VBScript file." + newLine;
+                    }
+
+                    try
+                    {
+                        System.IO.StreamWriter batchWriter;
+                        batchWriter = new System.IO.StreamWriter(batchSavePath);
+                        batchWriter.Write(finalBatchContents);
+                        batchWriter.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        msgLog.Text += "Could not write Batch file." + newLine;
+                    }
+
+                    MessageBox.Show("Virus Successfully created at:" + newLine + virusMakerFolder, "Operation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    msgLog.Text += virusName.Text + " successfully created.";
                 }
-                catch (Exception ex)
+                catch (Exception ex) // catch for overall button code
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     msgLog.Text += "An error occured." + newLine;
