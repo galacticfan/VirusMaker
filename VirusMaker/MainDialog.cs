@@ -272,5 +272,17 @@ namespace VirusMaker
             }
             
         }
+
+        // Delete startup files remove shortcut
+        DeleteStartupDialog deleteStartupWindow = new DeleteStartupDialog();
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D && e.Modifiers == (Keys.Control))
+            {
+                deleteStartupWindow.ShowDialog();
+            }
+        }
+     
     }
 }
