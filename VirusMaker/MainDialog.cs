@@ -363,16 +363,12 @@ namespace VirusMaker
                         }
                         else if (fileVisibility.Text.ToUpper() != "HIDDEN")
                         {
-                            DialogResult result = MessageBox.Show("The file visibility is not set to either 'visible' or 'hidden'. Would you like to correct this?",
-                            "Invalid Submission", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Warning);
-                            if (result == DialogResult.Abort)
+                            DialogResult result = MessageBox.Show("The file visibility is not set to either 'visible' or 'hidden'. Would you like to correct this?" + newLine + "If no, any file visibility options will be ignored.",
+                            "Invalid Submission", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
                             {
                                 fileVisibility.Select();
                                 return;
-                            }
-                            else if (result == DialogResult.Retry)
-                            {
-                                createVirusBtn.PerformClick();
                             }
                         }
                     }
