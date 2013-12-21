@@ -294,7 +294,8 @@ namespace VirusMaker
 
                     if (virusName.Text.Trim().Length == 0 )
                     {
-                        DialogResult result = MessageBox.Show("The virus name field is blank, do you want the default name to be used?", "Virus Name Invalid", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult result = MessageBox.Show("The virus name field is blank, do you want the default name to be used?",
+                            "Virus Name Invalid", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (result == DialogResult.Yes)
                         {
                             vbsSavePath += "myVirus.vbs";
@@ -347,6 +348,36 @@ namespace VirusMaker
                         msgLog.Text += "Could not write Batch file." + newLine;
                     }
 
+                    // File attribute settings
+                    if (readOnly_CB.Checked)
+                    {
+                        File.SetAttributes(vbsSavePath, File.GetAttributes(vbsSavePath) | FileAttributes.ReadOnly);
+                        File.SetAttributes(batchSavePath, File.GetAttributes(batchSavePath) | FileAttributes.ReadOnly);
+                    }
+                    if (fileVisibility.Text.ToUpper() != "VISIBLE")
+                    {
+                        if (fileVisibility.Text.ToUpper() == "HIDDEN")
+                        {
+                            File.SetAttributes(vbsSavePath, File.GetAttributes(vbsSavePath) | FileAttributes.Hidden);
+                            File.SetAttributes(batchSavePath, File.GetAttributes(batchSavePath) | FileAttributes.Hidden);
+                        }
+                        else if (fileVisibility.Text.ToUpper() != "HIDDEN")
+                        {
+                            DialogResult result = MessageBox.Show("The file visibility is not set to either 'visible' or 'hidden'. Would you like to correct this?",
+                            "Invalid Submission", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Abort)
+                            {
+                                fileVisibility.Select();
+                                return;
+                            }
+                            else if (result == DialogResult.Retry)
+                            {
+                                createVirusBtn.PerformClick();
+                            }
+                        }
+                    }
+                    
+                    // Succession message
                     MessageBox.Show("Virus Successfully created at:" + newLine + virusMakerFolder, "Operation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (defaultNameUsed) // adjust msgLog depending on defualtNameUsed
                     {
@@ -356,6 +387,8 @@ namespace VirusMaker
                     {
                         msgLog.Text += "'" + virusName.Text + "' successfully created." + newLine;
                     }
+
+                    defaultNameUsed = false; // reset bool
                 }
                 catch (Exception ex) // catch for overall button code
                 {
