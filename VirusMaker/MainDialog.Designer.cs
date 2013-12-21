@@ -345,6 +345,7 @@
             // 
             // spamErrorMsg_Input
             // 
+            this.spamErrorMsg_Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spamErrorMsg_Input.Location = new System.Drawing.Point(219, 62);
             this.spamErrorMsg_Input.Multiline = true;
             this.spamErrorMsg_Input.Name = "spamErrorMsg_Input";
@@ -353,6 +354,7 @@
             // 
             // spamErrorTitle_Input
             // 
+            this.spamErrorTitle_Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spamErrorTitle_Input.Location = new System.Drawing.Point(196, 35);
             this.spamErrorTitle_Input.Name = "spamErrorTitle_Input";
             this.spamErrorTitle_Input.Size = new System.Drawing.Size(184, 20);
@@ -471,6 +473,7 @@
             // msgLog
             // 
             this.msgLog.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.msgLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msgLog.Location = new System.Drawing.Point(16, 75);
             this.msgLog.Multiline = true;
             this.msgLog.Name = "msgLog";
