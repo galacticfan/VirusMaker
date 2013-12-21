@@ -520,6 +520,7 @@
             this.clearSettingsBtn.TabIndex = 3;
             this.clearSettingsBtn.Text = "Clear Current Settings";
             this.clearSettingsBtn.UseVisualStyleBackColor = true;
+            this.clearSettingsBtn.Click += new System.EventHandler(this.clearSettingsBtn_Click);
             // 
             // MainForm
             // 

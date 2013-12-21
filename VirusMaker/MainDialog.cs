@@ -92,6 +92,59 @@ namespace VirusMaker
             }
         }
 
+        // CLEAR SETTINGS BUTTON
+        private void clearSettingsBtn_Click(object sender, EventArgs e)
+        {
+            // Old broken code
+            //foreach (Control control in splitContainer1.Panel2.Controls)
+            //{
+            //    if (control is GroupBox)
+            //    {
+            //        foreach (Control child in (control as GroupBox).Controls)
+            //        {
+            //            if (child is CheckBox)
+            //            {
+            //                ((CheckBox)control).Checked = false;
+            //            }
+            //            else if (child is TextBox)
+            //            {
+            //                (control as TextBox).Clear();
+            //            }
+            //        }
+            //    }
+            //}
+
+            string currentSaveLocation = saveLocation_Display.Text; // temporary fix to stop certain textboxes resetting
+            string messageLog = msgLog.Text;
+            ClearForm(this);
+            saveLocation_Display.Text = currentSaveLocation;
+            msgLog.Text = messageLog;
+        }
+        public static void ClearForm(System.Windows.Forms.Control parent) // method to clear form
+        {
+            foreach (System.Windows.Forms.Control ctrControl in parent.Controls)
+            {
+                if (object.ReferenceEquals(ctrControl.GetType(), typeof(System.Windows.Forms.TextBox)))
+                {
+                    ((System.Windows.Forms.TextBox)ctrControl).Clear();
+                }
+                else if (object.ReferenceEquals(ctrControl.GetType(), typeof(System.Windows.Forms.CheckBox)))
+                {
+                    ((System.Windows.Forms.CheckBox)ctrControl).Checked = false;
+                }
+                else if (object.ReferenceEquals(ctrControl.GetType(), typeof(System.Windows.Forms.NumericUpDown)))
+                {
+                    ((System.Windows.Forms.NumericUpDown)ctrControl).Value = 0;
+                }
+
+                if (ctrControl.Controls.Count > 0)
+                {
+                    //Call itself to get all other controls in other containers 
+                    ClearForm(ctrControl);
+                }
+            }
+        }
+
         // CREATE VIRUS BUTTON
         private void createVirusBtn_Click(object sender, EventArgs e)
         {
@@ -322,6 +375,8 @@ namespace VirusMaker
                 deleteStartupWindow.ShowDialog();
             }
         }
+
+        
      
     }
 }
