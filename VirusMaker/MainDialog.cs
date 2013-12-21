@@ -162,10 +162,10 @@ namespace VirusMaker
             {
                 try
                 {
-                    string batchContentsMain = "REM Made with Virus Maker (Pre-Release v0.3)" + newLine + newLine + "@echo off" + newLine;
+                    string batchContentsMain = "REM Made with Virus Maker (Pre-Release v0.7)" + newLine + newLine + "@echo off" + newLine;
                     string batchContentsLoop = ":start" + newLine;
 
-                    string vbsContentsMain = "'Made with Virus Maker (Pre-Release v0.3)" + newLine + newLine;
+                    string vbsContentsMain = "'Made with Virus Maker (Pre-Release v0.7)" + newLine + newLine;
 
                     // Startup setup
                     if (copyToStartup_CB.Checked)
